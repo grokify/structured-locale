@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/grokify/structured-locale/schema/messages-v1.schema.json",
+  "title": "Messages File",
+  "description": "go-i18n compatible translation message file",
+  "type": "object",
+  "required": ["messages"],
+  "properties": {
+    "messages": {
+      "type": "array",
+      "description": "Array of translation messages",
+      "items": {
+        "$ref": "#/$defs/Message"
+      }
+    }
+  },
+  "$defs": {
+    "Message": {
+      "type": "object",
+      "description": "A single translation message",
+      "required": ["id", "translation"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique message identifier using dot notation (e.g., 'category.added')",
+          "pattern": "^[a-z][a-z0-9]*(?:\\.[a-z][a-z0-9_]*)*$"
+        },
+        "translation": {
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "Simple translation string"
+            },
+            {
+              "$ref": "#/$defs/PluralTranslations"
+            }
+          ]
+        }
+      }
+    },
+    "PluralTranslations": {
+      "type": "object",
+      "description": "CLDR plural category translations",
+      "required": ["other"],
+      "properties": {
+        "zero": {
+          "type": "string",
+          "description": "Translation for zero quantity (Arabic, etc.)"
+        },
+        "one": {
+          "type": "string",
+          "description": "Translation for singular (most languages)"
+        },
+        "two": {
+          "type": "string",
+          "description": "Translation for dual (Arabic, etc.)"
+        },
+        "few": {
+          "type": "string",
+          "description": "Translation for few (Slavic languages, etc.)"
+        },
+        "many": {
+          "type": "string",
+          "description": "Translation for many (Slavic languages, Arabic, etc.)"
+        },
+        "other": {
+          "type": "string",
+          "description": "Default/plural translation (required)"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
