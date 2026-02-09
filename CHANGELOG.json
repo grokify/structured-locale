@@ -1,0 +1,33 @@
+{
+  "irVersion": "1.0",
+  "project": "structured-locale",
+  "repository": "https://github.com/grokify/structured-locale",
+  "versioning": "semver",
+  "commitConvention": "conventional",
+  "maintainers": ["grokify"],
+  "releases": [
+    {
+      "version": "v0.1.0",
+      "date": "2026-02-08",
+      "highlights": [
+        { "description": "Initial release with BCP 47 locale parsing and message translation with CLDR pluralization support" }
+      ],
+      "added": [
+        { "description": "`locale` package with BCP 47 tag parsing and normalization", "commit": "fff2997" },
+        { "description": "`locale.Parse()` for parsing tags like `en-US`, `zh-Hans-CN`", "commit": "fff2997" },
+        { "description": "`locale.FallbackChain()` for locale fallback sequences", "commit": "fff2997" },
+        { "description": "`messages` package with translation bundle management", "commit": "b7eadb4" },
+        { "description": "`messages.Bundle` for loading and managing translations", "commit": "b7eadb4" },
+        { "description": "`messages.Localizer` with `T()`, `Tn()`, `Tf()` translation methods", "commit": "b7eadb4" },
+        { "description": "CLDR plural category support (zero, one, two, few, many, other)", "commit": "b7eadb4" },
+        { "description": "Template variable substitution with `{{.Name}}` syntax", "commit": "b7eadb4" },
+        { "description": "Embedded default translations for 6 locales (en, de, es, fr, ja, zh)", "commit": "b7eadb4" },
+        { "description": "JSON Schema for message files (`schema/messages-v1.schema.json`)", "commit": "b7eadb4" }
+      ],
+      "documentation": [
+        { "description": "README with usage examples for locale parsing and message translation" },
+        { "description": "PRD with roadmap for future packages (countries, phones, currencies, etc.)" }
+      ]
+    }
+  ]
+}
